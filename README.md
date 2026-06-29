@@ -16,11 +16,32 @@ Tiap key diklasifikasikan jadi `VALID`, `RESTRICTED`, `INVALID`, `RATE_LIMITED`,
 
 ## Prasyarat
 
-[Bun](https://bun.sh/).
+[Bun](https://bun.sh/) versi 1.0 ke atas. Kalau belum terpasang:
+
+```bash
+# Linux / macOS
+curl -fsSL https://bun.sh/install | bash
+
+# Windows (PowerShell)
+powershell -c "irm bun.sh/install.ps1 | iex"
+
+# atau via package manager
+npm install -g bun        # lewat npm
+brew install oven-sh/bun/bun   # macOS (Homebrew)
+```
+
+Cek instalasi:
+
+```bash
+bun --version
+```
 
 ## Setup
 
 ```bash
+git clone <repo-url>
+cd llm-key-checker
+bun install
 cp .env.example .env
 ```
 
@@ -43,6 +64,18 @@ Hanya `api_key` yang wajib. Field lain opsional.
 
 ```bash
 bun run check
+```
+
+Atau langsung tanpa script:
+
+```bash
+bun run check.ts
+```
+
+Override konfigurasi sekali jalan lewat environment variable, misalnya:
+
+```bash
+CHECK_MODE=model MODEL=qwen-plus,qwen-max CONCURRENCY=10 bun run check
 ```
 
 Hasil ditulis ke `output/results-<timestamp>.json`. Kalau `SPLIT_OUTPUT=true`, file

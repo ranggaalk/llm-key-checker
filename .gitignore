@@ -1,0 +1,26 @@
+# ── Rahasia & data sensitif (JANGAN di-commit) ──────────────────────
+# Berisi API key & kredensial tim
+.env
+.env.*
+!.env.example
+output/               # hasil: berisi api_key penuh (tidak di-mask)
+*.key
+
+# ── Dependencies ─────────────────────────────────────────────────────
+node_modules/
+.bun/
+bun.lockb             # lockfile bun (commit kalau mau reproducible; default abaikan)
+
+# ── Log & file sementara ─────────────────────────────────────────────
+*.log
+*.tmp
+tmp/
+.cache/
+
+# ── OS / editor ──────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
